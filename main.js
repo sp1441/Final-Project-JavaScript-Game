@@ -1,4 +1,4 @@
-=const gameCanvas = document.getElementById('gameCanvas');
+const gameCanvas = document.getElementById('gameCanvas');
 const ctx = gameCanvas.getContext('2d');
 const segmentSize = 10;
 let serpent = [{ x: 5, y: 5 }];
