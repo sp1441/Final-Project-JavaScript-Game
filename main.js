@@ -20,10 +20,29 @@ function drawSerpent() {
 }
 
 function drawObstacles() {
-  drawObstacles.forEach(obstacle => {
+  obstacles.forEach(obstacle => {
     drawSegment(obstacle.x, obstacle.y, "red");
   })
 }
+
+
+function createObstacle() {
+  const directions = ["right", "left", "up", "down"];
+  const randomDirection = directions[Math.floor(Math.random() * directions.length)];
+  const obstacle = {
+    x: Math.floor(Math.random() * gameCanvas.width / segmentSize),
+    y: Math.floor(Math.random() * gameCanvas.height / segmentSize),
+    direction: randomDirection
+  };
+  obstacles.push(obstacle);
+}
+
+function changeObstacleDirection(obstacle) {
+  const directions = ["right", "left", "up", "down"];
+  const randomDirection = directions[Math.floor(Math.random() * directions.length)];
+  obstacle.direction = randomDirection;
+}
+
 
 function moveSerpent() {
   let head = { x: serpent[0].x, y: serpent[0].y };
@@ -130,10 +149,13 @@ function gameLoop() {
   drawSegment(snack.x, snack.y);
   moveSerpent();
   drawSerpent();
+  moveObstacles();
+  drawObstacles();
 }
 
 function initiateGame() {
   restart();
+  setTimeout(createObstacle, 3000);
   interval = setInterval(gameLoop, 100);
 }
 
