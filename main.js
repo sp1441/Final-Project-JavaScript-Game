@@ -6,15 +6,23 @@ let serpent = [{ x: 5, y: 5 }];
 let snack = { x: 10, y: 10 };
 let heading = 'right';
 let interval;
+let obstacles = [];
 
-function drawSegment(x, y) {
+function drawSegment(x, y, color) {
+  ctx.fillStyle = color;
   ctx.fillRect(x * segmentSize, y * segmentSize, segmentSize, segmentSize);
 }
 
 function drawSerpent() {
   serpent.forEach(part => {
-    drawSegment(part.x, part.y);
+    drawSegment(part.x, part.y, "pink");
   });
+}
+
+function drawObstacles() {
+  drawObstacles.forEach(obstacle => {
+    drawSegment(obstacle.x, obstacle.y, "red");
+  })
 }
 
 function moveSerpent() {
@@ -40,6 +48,25 @@ function moveSerpent() {
   } else {
     serpent.pop();
   }
+}
+
+function moveObstacles() {
+  obstacles.forEach(obstacle => {
+    switch (obstacle.direction) {
+      case "right":
+        obstacle.x++;
+        break;
+      case "left":
+        obstacle.x--;
+        break;
+      case "up":
+        obstacle.y--;
+        break;
+      case "down":
+        obstacle.y++;
+        break;
+    }
+  })
 }
 
 function handleArrow(event) {
@@ -74,6 +101,11 @@ function detectCrash() {
   }
   for (let i = 1; i < serpent.length; i++) {
     if (head.x === serpent[i].x && head.y === serpent[i].y) {
+      return true;
+    }
+  }
+  for (let i = 0; i < obstacles.length; i++) {
+    if (head.x === obstacles[i].x && head.y === obstacles[i].y) {
       return true;
     }
   }
