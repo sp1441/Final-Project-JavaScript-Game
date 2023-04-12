@@ -1,24 +1,24 @@
-const canvas = document.getElementById('canvas');
-const context = canvas.getContext('2d');
-const blockSize = 10;
-let snake = [{ x: 5, y: 5 }];
-let food = { x: 10, y: 10 };
-let direction = 'right';
-let intervalId;
+=const gameCanvas = document.getElementById('gameCanvas');
+const ctx = gameCanvas.getContext('2d');
+const segmentSize = 10;
+let serpent = [{ x: 5, y: 5 }];
+let snack = { x: 10, y: 10 };
+let heading = 'right';
+let interval;
 
-function drawBlock(x, y) {
-  context.fillRect(x * blockSize, y * blockSize, blockSize, blockSize);
+function drawSegment(x, y) {
+  ctx.fillRect(x * segmentSize, y * segmentSize, segmentSize, segmentSize);
 }
 
-function drawSnake() {
-  snake.forEach(segment => {
-    drawBlock(segment.x, segment.y);
+function drawSerpent() {
+  serpent.forEach(part => {
+    drawSegment(part.x, part.y);
   });
 }
 
-function moveSnake() {
-  let head = { x: snake[0].x, y: snake[0].y };
-  switch (direction) {
+function moveSerpent() {
+  let head = { x: serpent[0].x, y: serpent[0].y };
+  switch (heading) {
     case 'right':
       head.x++;
       break;
@@ -32,76 +32,77 @@ function moveSnake() {
       head.y++;
       break;
   }
-  snake.unshift(head);
-  if (head.x === food.x && head.y === food.y) {
-    food.x = Math.floor(Math.random() * canvas.width / blockSize);
-    food.y = Math.floor(Math.random() * canvas.height / blockSize);
+  serpent.unshift(head);
+  if (head.x === snack.x && head.y === snack.y) {
+    snack.x = Math.floor(Math.random() * gameCanvas.width / segmentSize);
+    snack.y = Math.floor(Math.random() * gameCanvas.height / segmentSize);
   } else {
-    snake.pop();
+    serpent.pop();
   }
 }
 
-function handleKeydown(event) {
+function handleArrow(event) {
   switch (event.key) {
     case 'ArrowRight':
-      if (direction !== 'left') {
-        direction = 'right';
+      if (heading !== 'left') {
+        heading = 'right';
       }
       break;
     case 'ArrowLeft':
-      if (direction !== 'right') {
-        direction = 'left';
+      if (heading !== 'right') {
+        heading = 'left';
       }
       break;
     case 'ArrowUp':
-      if (direction !== 'down') {
-        direction = 'up';
+      if (heading !== 'down') {
+        heading = 'up';
       }
       break;
     case 'ArrowDown':
-      if (direction !== 'up') {
-        direction = 'down';
+      if (heading !== 'up') {
+        heading = 'down';
       }
       break;
   }
 }
 
-function checkCollision() {
-  let head = snake[0];
-  if (head.x < 0 || head.x >= canvas.width / blockSize || head.y < 0 || head.y >= canvas.height / blockSize) {
+function detectCrash() {
+  let head = serpent[0];
+  if (head.x < 0 || head.x >= gameCanvas.width / segmentSize || head.y < 0 || head.y >= gameCanvas.height / segmentSize) {
     return true;
   }
-  for (let i = 1; i < snake.length; i++) {
-    if (head.x === snake[i].x && head.y === snake[i].y) {
+  for (let i = 1; i < serpent.length; i++) {
+    if (head.x === serpent[i].x && head.y === serpent[i].y) {
       return true;
     }
   }
   return false;
 }
 
-function resetGame() {
-  clearInterval(intervalId);
-  snake = [{ x: 5, y: 5 }];
-  food = { x: 10, y: 10 };
-  direction = 'right';
+function restart() {
+  clearInterval(interval);
+  serpent = [{ x: 5, y: 5 }];
+  snack = { x: 10, y: 10 };
+  heading = 'right';
 }
 
-function main() {
-  if (checkCollision()) {
-    resetGame();
+function gameLoop() {
+  if (detectCrash()) {
+    restart();
     alert('Game Over');
-    intervalId = setInterval(main, 100);
+    interval = setInterval(gameLoop, 100);
     return;
   }
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  drawBlock(food.x, food.y);
-  moveSnake();
-  drawSnake();
+  ctx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+  drawSegment(snack.x, snack.y);
+  moveSerpent();
+  drawSerpent();
 }
 
-function startGame() {
-  resetGame();
-  intervalId = setInterval(main, 100);
+function initiateGame() {
+  restart();
+  interval = setInterval(gameLoop, 100);
 }
 
-document.getElementById('start-button').addEventListener('click', startGame);
+document.getElementById('playButton').addEventListener('click', initiateGame);
+document.addEventListener('keydown', handleArrow);
