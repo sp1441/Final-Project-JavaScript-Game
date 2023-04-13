@@ -30,13 +30,13 @@ My switch statement assigns the obstacle's new x and y coordinates depending on 
 This mechanism ensures that once an obstacle leaves the canvas, it will respawn at a random position along a random side and continue moving with a new direction.
 
 # Reach Goals
--Provide options of different levels of difficulty
--Customize images of cat, mouse, snake
--Make multiplayer 
--Make different pop-ups and buttons depending on the collision
--Have different obstacles do differnt things (for example, move in differnt directions)
+- Provide options of different levels of difficulty
+- Customize images of cat, mouse, snake
+- Make multiplayer 
+- Make different pop-ups and buttons depending on the collision
+- Have different obstacles do differnt things (for example, move in differnt directions)
 
-# works referenced/resources for help:
+# Works Referenced/Resources for Help:
 
 image credits: 
 https://unsplash.com/photos/C2PCa6DhlYE
