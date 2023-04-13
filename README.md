@@ -6,58 +6,22 @@ My final project (which is an adaptation of the the popular "snake" game using J
 
 Some of the pieces of code I am most proud of are the following:
 
-if (score % 5 === 0) {
-      createObstacle(1);
-    }
+![alt text](./images-here/Screen%20Shot%201.png)
+
 
 This is one of my personal features that I added that will create a new obstacle or "cat" each time a player earns 5 points, which makes for a fun extra challenge! This also, funnily enough, took me way too long to figure out!
 
 another piece of code that is this one: 
 
-function createObstacle(count) {
-  for (let i = 0; i < count; i++) {
-    const directions = ["right", "left", "up", "down"];
-    const randomDirection = directions[Math.floor(Math.random() * directions.length)];
-    const obstacle = {
-      x: Math.floor(Math.random() * gameCanvas.width / segmentSize),
-      y: Math.floor(Math.random() * gameCanvas.height / segmentSize),
-      direction: randomDirection
-    };
-    obstacles.push(obstacle);
-  }
+![alt text](./images-here/screen%20shot%202.png)
 
 
 I set a (count) parameter the will represent the number of obstacles I want to insert, which was useful for controlling not only how many obstacles I wanted to start with, along with how many I wanted to add based on how much the score climbs. I initiate the for loop, which will iterate up 1 each time until it reaches my count -1. Then inside my loop, I set an array of my directions. I then created the variable of randomDirection to store a randomly selected direction form the directions array my using Math.random() and multiplied it by the length of the directions array. I also neede dot use Math.floor to get a valid index within the array. From there, I made a new object called "obstacle" that had a random position on the x and y-axis, multiplying my Math.random() by the width and height of my canvas and dividing it by segmentSize, then rounding with Math.floor() again. I then had this randomly selected direction stored in randomDiraction. I then have the newly created obstacle added ot the obstacles array using the .push method. By the end, the obstacles array has new obstacle objects, each with a random position on the game canvas and a random direction.
 
-^ I then had a moveObstacles function that checked if the obstacle had gone off the canvas by comparing its x and y coordinates with the canvas dimensions. If the obstacle is outside of the canvas, the code shooses a random side for the obstacle to respawn at.
+I then had a moveObstacles function that checked if the obstacle had gone off the canvas by comparing its x and y coordinates with the canvas dimensions. If the obstacle is outside of the canvas, the code shooses a random side for the obstacle to respawn at.
 
-if (obstacle.x < 0 || obstacle.x >= gameCanvas.width / segmentSize || obstacle.y < 0 || obstacle.y >= gameCanvas.height / segmentSize) {
-      const sides = ["top", "bottom", "right", "left"];
-      const respawnRandomSide = sides[Math.floor(Math.random() * sides.length)];
-
-      switch (respawnRandomSide) {
-        case "top":
-          obstacle.x = Math.floor(Math.random() * gameCanvas.width / segmentSize);
-          obstacle.y = 0;
-          break;
-        case "bottom":
-          obstacle.x = Math.floor(Math.random() * gameCanvas.width / segmentSize);
-          obstacle.y = gameCanvas.height / segmentSize - 1;
-          break;
-        case "right":
-          obstacle.x = gameCanvas.width / segmentSize - 1;
-          obstacle.y = Math.floor(Math.random() * gameCanvas.height / segmentSize);
-          break;
-        case "left":
-          obstacle.x = 0;
-          obstacle.y = Math.floor(Math.random() * gameCanvas.height / segmentSize);
-          break;
-      }
-      changeObstacleDirection(obstacle);
-    }
-  });
-}```
-
+![alt text](./images-here/screen%20shot%203.png)
+![alt text](./images-here/screen%20shot%204.png)
 
 In this moveObstacles() function, after moving the obstacle according to its direction, it checks if the obstacle has gone off the canvas by comparing its x and y coordinates with the canvas dimensions. If the obstacle is outside the canvas, the code chooses a random side ("top", "bottom", "right", "left") for the obstacle to respawn.
 
@@ -65,7 +29,12 @@ My switch statement assigns the obstacle's new x and y coordinates depending on 
 
 This mechanism ensures that once an obstacle leaves the canvas, it will respawn at a random position along a random side and continue moving with a new direction.
 
-
+# Reach Goals
+-Provide options of different levels of difficulty
+-Customize images of cat, mouse, snake
+-Make multiplayer 
+-Make different pop-ups and buttons depending on the collision
+-Have different obstacles do differnt things (for example, move in differnt directions)
 
 # works referenced/resources for help:
 
