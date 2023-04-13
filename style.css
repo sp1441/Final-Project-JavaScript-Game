@@ -10,4 +10,14 @@
   right: 50%;
   font-size: medium;
   padding: 15px;
+  color: rosybrown;
+}
+
+#youWinButton {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  font-size: medium;
+  padding: 15px;
+  color: aquamarine;
 }

@@ -9,6 +9,18 @@ let interval;
 let obstacles = [];
 let score = 0;
 
+function displayYouWin() {
+  const youWinButton = document.getElementById("youWinButton");
+  youWinButton.style.display = "block";
+  youWinButton.onclick = hideYouWinButton;
+}
+
+function hideYouWinButton() {
+  const youWinButton = document.getElementById("youWinButton");
+  youWinButton.style.display = "block";
+}
+
+
 function resetGame() {
   serpent = [{ x: 5, y: 5 }];
   snack = [{ x: 10, y: 10 }];
@@ -115,6 +127,10 @@ function moveSerpent() {
     if (score % 5 === 0) {
       createObstacle(1);
     }
+  } if (score === 20) {
+    clearInterval(interval);
+    displayYouWin();
+    return;
   } else {
     serpent.pop();
   }
