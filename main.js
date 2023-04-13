@@ -127,12 +127,15 @@ function moveSerpent() {
     if (score % 5 === 0) {
       createObstacle(1);
     }
-  } if (score === 20) {
+  } else {
+    serpent.pop();
+  }
+
+
+  if (score === 20) {
     clearInterval(interval);
     displayYouWin();
     return;
-  } else {
-    serpent.pop();
   }
 }
 
