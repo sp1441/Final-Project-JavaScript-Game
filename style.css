@@ -21,3 +21,17 @@
   padding: 15px;
   color: aquamarine;
 }
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.centered-div {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  width: 100%;
+}
