@@ -7,6 +7,11 @@ let snack = { x: 10, y: 10 };
 let heading = 'right';
 let interval;
 let obstacles = [];
+let score = 0;
+
+function updateSnackScore() {
+  document.getElementById("snackScore").innerText = `Score: ${score}`;
+}
 
 function drawSegment(x, y, color) {
   ctx.fillStyle = color;
@@ -80,6 +85,8 @@ function moveSerpent() {
   }
   serpent.unshift(head);
   if (head.x === snack.x && head.y === snack.y) {
+    score++;
+    updateSnackScore();
     snack.x = Math.floor(Math.random() * gameCanvas.width / segmentSize);
     snack.y = Math.floor(Math.random() * gameCanvas.height / segmentSize);
   } else {
