@@ -40,7 +40,23 @@ function createObstacle(count) {
 }
 
 function changeObstacleDirection(obstacle) {
-  const directions = ["right", "left", "up", "down"];
+  const centerX = gameCanvas.width / (2 * segmentSize);
+  const centerY = gameCanvas.height / (2 * segmentSize);
+
+  const directions = [];
+
+  if (obstacle.x < centerX) {
+    directions.push("right");
+  } else {
+    directions.push("left");
+  }
+
+  if (obstacle.y < centerY) {
+    directions.push("down");
+  } else {
+    directions.push("up");
+  }
+
   const randomDirection = directions[Math.floor(Math.random() * directions.length)];
   obstacle.direction = randomDirection;
 }
@@ -94,17 +110,22 @@ function moveObstacles() {
       switch (respawnRandomSide) {
         case "top":
           obstacle.x = Math.floor(Math.random() * gameCanvas.width / segmentSize);
+          obstacle.y = 0;
           break;
         case "bottom":
           obstacle.x = Math.floor(Math.random() * gameCanvas.width / segmentSize);
+          obstacle.y = gameCanvas.height / segmentSize - 1;
           break;
         case "right":
+          obstacle.x = gameCanvas.width / segmentSize - 1;
           obstacle.y = Math.floor(Math.random() * gameCanvas.height / segmentSize);
           break;
         case "left":
+          obstacle.x = 0;
           obstacle.y = Math.floor(Math.random() * gameCanvas.height / segmentSize);
           break;
       }
+      changeObstacleDirection(obstacle);
     }
   });
 }
