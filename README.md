@@ -67,9 +67,6 @@ This mechanism ensures that once an obstacle leaves the canvas, it will respawn 
 
 
 
-
-Regenerate response
-
 works referenced/resources for help:
 
 image credits: https://unsplash.com/photos/C2PCa6DhlYE
