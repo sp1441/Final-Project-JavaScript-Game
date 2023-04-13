@@ -9,3 +9,5 @@ problem-solving: https://bobbyhadz.com/blog/javascript-referenceerror-cannot-acc
 
 Improvements/alternative solutions: https://www.youtube.com/watch?v=QTcIXok9wNY
 https://www.youtube.com/watch?v=baBq5GAL0_U
+
+troubleshooting: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect

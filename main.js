@@ -9,6 +9,15 @@ let interval;
 let obstacles = [];
 let score = 0;
 
+function resetGame() {
+  serpent = [{ x: 5, y: 5 }];
+  snack = [{ x: 10, y: 10 }];
+  heading = "right";
+  score = 0
+  updateSnackScore();
+  obstacles = [];
+}
+
 function displayGameOver() {
   const gameOverButton = document.getElementById("gameOverButton");
   gameOverButton.style.display = "block";
@@ -18,6 +27,8 @@ function displayGameOver() {
 function hideGameOverButton() {
   const gameOverButton = document.getElementById("gameOverButton");
   gameOverButton.style.display = "none";
+  ctx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+  resetGame();
 }
 
 function updateSnackScore() {
