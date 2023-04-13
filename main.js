@@ -26,15 +26,17 @@ function drawObstacles() {
 }
 
 
-function createObstacle() {
-  const directions = ["right", "left", "up", "down"];
-  const randomDirection = directions[Math.floor(Math.random() * directions.length)];
-  const obstacle = {
-    x: Math.floor(Math.random() * gameCanvas.width / segmentSize),
-    y: Math.floor(Math.random() * gameCanvas.height / segmentSize),
-    direction: randomDirection
-  };
-  obstacles.push(obstacle);
+function createObstacle(count) {
+  for (let i = 0; i < count; i++) {
+    const directions = ["right", "left", "up", "down"];
+    const randomDirection = directions[Math.floor(Math.random() * directions.length)];
+    const obstacle = {
+      x: Math.floor(Math.random() * gameCanvas.width / segmentSize),
+      y: Math.floor(Math.random() * gameCanvas.height / segmentSize),
+      direction: randomDirection
+    };
+    obstacles.push(obstacle);
+  }
 }
 
 function changeObstacleDirection(obstacle) {
@@ -85,7 +87,26 @@ function moveObstacles() {
         obstacle.y++;
         break;
     }
-  })
+    if (obstacle.x < 0 || obstacle.x >= gameCanvas.width / segmentSize || obstacle.y < 0 || obstacle.y >= gameCanvas.height / segmentSize) {
+      const sides = ["top", "bottom", "right", "left"];
+      const respawnRandomSide = sides[Math.floor(Math.random() * sides.length)];
+
+      switch (respawnRandomSide) {
+        case "top":
+          obstacle.x = Math.floor(Math.random() * gameCanvas.width / segmentSize);
+          break;
+        case "bottom":
+          obstacle.x = Math.floor(Math.random() * gameCanvas.width / segmentSize);
+          break;
+        case "right":
+          obstacle.y = Math.floor(Math.random() * gameCanvas.height / segmentSize);
+          break;
+        case "left":
+          obstacle.y = Math.floor(Math.random() * gameCanvas.height / segmentSize);
+          break;
+      }
+    }
+  });
 }
 
 function handleArrow(event) {
@@ -156,6 +177,7 @@ function gameLoop() {
 function initiateGame() {
   restart();
   setTimeout(createObstacle, 3000);
+  createObstacle(1);
   interval = setInterval(gameLoop, 100);
 }
 
