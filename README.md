@@ -34,7 +34,7 @@ This mechanism ensures that once an obstacle leaves the canvas, it will respawn 
 - Customize images of cat, mouse, snake
 - Make multiplayer 
 - Make different pop-ups and buttons depending on the collision
-- Have different obstacles do differnt things (for example, move in differnt directions)
+- Have different obstacles do different things (for example, move in different directions)
 
 # Works Referenced/Resources for Help:
 
