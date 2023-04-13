@@ -54,7 +54,7 @@ function drawSegment(x, y, color) {
 
 function drawSerpent() {
   serpent.forEach(part => {
-    drawSegment(part.x, part.y, "purple");
+    drawSegment(part.x, part.y, "#b19cd9");
   });
 }
 

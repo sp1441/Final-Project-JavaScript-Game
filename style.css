@@ -60,5 +60,15 @@ html {
 }
 
 p {
-  font-size: large;
+  font-size: 25px;
+}
+
+#snackScore {
+  font-size: 30px;
+}
+
+#playButton {
+  font-size: 20px;
+  padding: 12px 24px;
+  border-radius: 6px;
 }
