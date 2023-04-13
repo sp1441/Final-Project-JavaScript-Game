@@ -61,6 +61,23 @@ describe("Snake Game", () => {
     expect(crashDetected).toBe(true);
   });
 
+  it("should not detect a crash when an obstacle does not hit any part of the snake, despite having one x or y value in common", () => {
+
+    serpent = [
+      { x: 5, y: 5 },
+      { x: 6, y: 5 },
+      { x: 7, y: 5 },
+    ];
+
+    obstacles = [
+      { x: 7, y: 6, direction: 'right' },
+    ];
+
+    const crashDetected = detectCrash();
+
+    expect(crashDetected).toBe(false);
+  });
+
 });
 
 
