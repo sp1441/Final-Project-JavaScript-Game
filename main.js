@@ -9,6 +9,17 @@ let interval;
 let obstacles = [];
 let score = 0;
 
+function displayGameOver() {
+  const gameOverButton = document.getElementById("gameOverButton");
+  gameOverButton.style.display = "block";
+  gameOverButton.onclick = hideGameOverButton;
+}
+
+function hideGameOverButton() {
+  const gameOverButton = document.getElementById("gameOverButton");
+  gameOverButton.style.display = "none";
+}
+
 function updateSnackScore() {
   document.getElementById("snackScore").innerText = `Score: ${score}`;
 }
@@ -186,13 +197,14 @@ function restart() {
   serpent = [{ x: 5, y: 5 }];
   snack = { x: 10, y: 10 };
   heading = 'right';
+  score = 0;
+  updateSnackScore();
 }
 
 function gameLoop() {
   if (detectCrash()) {
-    restart();
-    alert('Game Over');
-    interval = setInterval(gameLoop, 100);
+    clearInterval(interval);
+    displayGameOver();
     return;
   }
   ctx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
