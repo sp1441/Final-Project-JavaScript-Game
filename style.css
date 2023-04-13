@@ -1,8 +1,9 @@
 #gameCanvas {
   position: relative;
-  border: 1px solid black;
+  border: 4px solid rgb(245, 243, 243);
   background-image: url("./images-here/background.jpg");
   background-size: cover;
+  display: inline-block;
 }
 
 #gameOverButton {
@@ -28,7 +29,8 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: rgb(67, 186, 71);
+  background-image: url("./images-here/background.jpg");
+  background-size: contain;
 }
 
 .centered-div {
@@ -56,15 +58,20 @@ html {
 #ScoreBoard {
   margin-bottom: 0px;
   padding-bottom: 0px;
+  color: aliceblue;
 
 }
 
 p {
-  font-size: 25px;
+  font-size: 30px;
+  color: white;
+  max-width: 800px;
+  text-align: center;
 }
 
 #snackScore {
   font-size: 30px;
+  color: white;
 }
 
 #playButton {
