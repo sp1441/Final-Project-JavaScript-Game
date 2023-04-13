@@ -42,10 +42,12 @@ html {
 
 .mouseColor {
   color: white;
+  font-size: 35px;
 }
 
 .catColor {
   color: orange;
+  font-size: 35px;
 }
 
 #gameTitle {
