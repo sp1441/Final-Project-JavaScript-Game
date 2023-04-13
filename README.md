@@ -6,7 +6,7 @@ My final project (which is an adaptation of the the popular "snake" game using J
 
 Some of the pieces of code I am most proud of are the following:
 
-if (score % 5 === 0) {
+```if (score % 5 === 0) {
       createObstacle(1);
     }
 
@@ -14,7 +14,7 @@ This is one of my personal features that I added that will create a new obstacle
 
 another piece of code that is this one: 
 
-function createObstacle(count) {
+```function createObstacle(count) {
   for (let i = 0; i < count; i++) {
     const directions = ["right", "left", "up", "down"];
     const randomDirection = directions[Math.floor(Math.random() * directions.length)];
