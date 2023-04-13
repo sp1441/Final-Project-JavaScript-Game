@@ -111,6 +111,10 @@ function moveSerpent() {
     updateSnackScore();
     snack.x = Math.floor(Math.random() * gameCanvas.width / segmentSize);
     snack.y = Math.floor(Math.random() * gameCanvas.height / segmentSize);
+
+    if (score % 5 === 0) {
+      createObstacle(1);
+    }
   } else {
     serpent.pop();
   }
