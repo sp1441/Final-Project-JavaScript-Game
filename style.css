@@ -12,7 +12,6 @@
   transform: translate(-50%, -50%);
   font-size: medium;
   padding: 15px;
-  color: rosybrown;
 }
 
 #youWinButton {
@@ -22,7 +21,6 @@
   transform: translate(-50%, -50%);
   font-size: medium;
   padding: 15px;
-  color: aquamarine;
 }
 
 body,

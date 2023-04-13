@@ -26,4 +26,41 @@ describe("Snake Game", () => {
     serpent = [{ x: 10, y: -1 }];
     expect(detectCrash()).toBe(true);
   });
+
+  it("should detect a crash when an obstacle hits any part of the snake", () => {
+
+    serpent = [
+      { x: 5, y: 5 },
+      { x: 6, y: 5 },
+      { x: 7, y: 5 },
+    ];
+
+    obstacles = [
+      { x: 6, y: 5, direction: 'right' },
+    ];
+
+    const crashDetected = detectCrash();
+
+    expect(crashDetected).toBe(true);
+  });
+
+  it("should detect a crash when an obstacle hits any part of the snake PT2", () => {
+
+    serpent = [
+      { x: 5, y: 5 },
+      { x: 6, y: 5 },
+      { x: 7, y: 5 },
+    ];
+
+    obstacles = [
+      { x: 7, y: 5, direction: 'right' },
+    ];
+
+    const crashDetected = detectCrash();
+
+    expect(crashDetected).toBe(true);
+  });
+
 });
+
+
