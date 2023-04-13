@@ -30,6 +30,7 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: rgb(67, 186, 71);
 }
 
 .centered-div {
@@ -37,4 +38,28 @@ html {
   place-items: center;
   height: 100%;
   width: 100%;
+}
+
+.mouseColor {
+  color: white;
+}
+
+.catColor {
+  color: orange;
+}
+
+#gameTitle {
+  margin-bottom: 1px;
+  padding-bottom: 0px;
+  color: white;
+}
+
+#ScoreBoard {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+
+}
+
+p {
+  font-size: large;
 }
