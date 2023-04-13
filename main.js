@@ -15,13 +15,13 @@ function drawSegment(x, y, color) {
 
 function drawSerpent() {
   serpent.forEach(part => {
-    drawSegment(part.x, part.y, "pink");
+    drawSegment(part.x, part.y, "purple");
   });
 }
 
 function drawObstacles() {
   obstacles.forEach(obstacle => {
-    drawSegment(obstacle.x, obstacle.y, "red");
+    drawSegment(obstacle.x, obstacle.y, "orange");
   })
 }
 
@@ -166,9 +166,10 @@ function detectCrash() {
     }
   }
   for (let i = 0; i < obstacles.length; i++) {
-    if (head.x === obstacles[i].x && head.y === obstacles[i].y) {
-      return true;
-    }
+    for (let l = 0; l < serpent.length; l++)
+      if (serpent[l].x === obstacles[i].x && serpent[l].y === obstacles[i].y) {
+        return true;
+      }
   }
   return false;
 }
@@ -188,7 +189,7 @@ function gameLoop() {
     return;
   }
   ctx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
-  drawSegment(snack.x, snack.y);
+  drawSegment(snack.x, snack.y, "white");
   moveSerpent();
   drawSerpent();
   moveObstacles();
